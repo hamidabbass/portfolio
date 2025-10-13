@@ -1,12 +1,15 @@
-application:
-  name: "portfolio-spark-52-v2"
-  pods:
-    - name: "portfolio"
-      image: "ghcr.io/hamidabbass/portfolio-spark-52:latest"
-      path: "/"
-      servicePorts: [80]
-      vars:
-        VITE_SUPABASE_PROJECT_ID: "awjvkfhuwrlztdhfovnd"
-        VITE_SUPABASE_PUBLISHABLE_KEY: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF3anZrZmh1d3JsenRkaGZvdm5kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTkyMjkzNTAsImV4cCI6MjA3NDgwNTM1MH0.Ktp7sqf-cy5ND_atKaMfBzgjFibnmI8rTER896lSs6U"
-        VITE_SUPABASE_URL: "https://awjvkfhuwrlztdhfovnd.supabase.co"
-        FRONT_FACING_URL: "<% URL %>"
+# Nexlayer MCP Deployment YAML
+pods:
+  - name: frontend
+    image: <IMAGE_URL_PLACEHOLDER>
+    ports:
+      - port: 80
+        public: true
+    env:
+      # If your frontend needs to know its public URL, use the scriptlet below
+      # VITE_PUBLIC_SITE_URL: "<% URL %>"
+    healthcheck:
+      path: /health
+      interval: 30
+      timeout: 5
+      retries: 3
