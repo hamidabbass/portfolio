@@ -1,0 +1,10 @@
+application:
+  name: "portfolio"
+  pods:
+    - name: "frontend"
+      image: "registry.nexlayer.io/nexlayer-mcp/ac2b2fb10a0cf3682bce31f19f87895e/portfolio-fc67fc25-frontend:be4bb9db-1760564113"
+      path: "/"
+      servicePorts: [80]
+      vars:
+        NODE_ENV: "production"
+        FRONTEND_URL: "<% URL %>"
