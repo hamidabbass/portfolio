@@ -1,10 +1,12 @@
+
 FROM node:20-alpine AS builder
 WORKDIR /app
 COPY package.json ./
-COPY bun.lockb ./
+COPY package-lock.json ./
 COPY . .
-RUN bun install --frozen-lockfile
-RUN npm run build || bun run build
+RUN npm install --frozen-lockfile
+RUN npm run build
+
 
 FROM nginx:alpine
 COPY --from=builder /app/dist /usr/share/nginx/html
